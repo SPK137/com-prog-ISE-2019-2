@@ -36,7 +36,7 @@ public class L12{
 		public void draw(){
 			for(int i=1 ; i<=rows ; i++){
 				for(int j=1 ; j<=rows ; j++)
-					System.out.print(character+" ");
+					System.out.print(character);
 				System.out.println();
 			}
 		}
@@ -48,7 +48,7 @@ public class L12{
 				if(i>=y){										//only prints character after y rows
 					for(int j=1 ; j<=rows+x ; j++){
 						if(j>=x)								//only prints character after x spaces
-							System.out.print(character+" ");
+							System.out.print(character);
 						else System.out.print(" ");				//otherwise prints whitespace
 					}
 				}
@@ -81,10 +81,10 @@ public class L12{
 			for(int i=1 ; i<=rows ; i++){
 				if(isVerticalFlip){			          //when vertical flipped print some whitespaces first to push the triangle to the right
 					for(int k=1; k<=rows-i ; k++)
-						System.out.print("  ");
+						System.out.print(" ");
 				}
 				for(int j=1 ; j<=i ; j++){
-					System.out.print(character+" ");
+					System.out.print(character);
 				}
 				System.out.println();
 			}
@@ -97,34 +97,14 @@ public class L12{
 				if(i>=y){
 					if(isVerticalFlip){
 						for(int k=1; k<=rows-i ; k++)
-							System.out.print("  ");
+							System.out.print(" ");
 					}
 					for(int j=1 ; j<=i+x ; j++){
 						if(j>=x)
-							System.out.print(character+" ");
+							System.out.print(character);
 						else
 							System.out.print(" ");
 					}
-				}
-				System.out.println();
-			}
-		}
-
-		public void drawDoubleTriangle(int space){  //for the two triangle at the last part
-			for(int i=1 ; i<=rows ; i++){
-				//Left triangle
-				for(int k=1; k<=rows-i ; k++)
-					System.out.print("  ");
-				for(int j=1 ; j<=i ; j++){
-					System.out.print(character+" ");
-				}
-				
-				for(int index=1 ; index<=space ; index++)
-					System.out.print(" ");
-				
-				//Right triangle
-				for(int j=1 ; j<=i ; j++){
-					System.out.print(character+" ");
 				}
 				System.out.println();
 			}
@@ -218,6 +198,33 @@ public class L12{
 		public String toString(){return "Square: rows:"+rows+" character:"+character+" isHorizontalFlip:"+isHorizontalFlip;}
 		public boolean isHorizontalFlip(){return isHorizontalFlip;}
 		public void setHorizontalFlip(boolean isHorizontalFlip){this.isHorizontalFlip = isHorizontalFlip;}
+
+	}
+
+	public class DoubleRightTriangle extends RightTriangle{
+
+		public DoubleRightTriangle(int rows){ super(rows); }
+		public DoubleRightTriangle(int rows, char character){ super(rows,character); }
+
+		public void drawDoubleTriangle(int space){  //for the two triangle at the last part
+			for(int i=1 ; i<=rows ; i++){
+				//Left triangle
+				for(int k=1; k<=rows-i ; k++)
+					System.out.print(" ");
+				for(int j=1 ; j<=i ; j++){
+					System.out.print(character);
+				}
+				
+				for(int index=1 ; index<=space ; index++)
+					System.out.print(" ");
+				
+				//Right triangle
+				for(int j=1 ; j<=i ; j++){
+					System.out.print(character);
+				}
+				System.out.println();
+			}
+		}
 
 	}
 
